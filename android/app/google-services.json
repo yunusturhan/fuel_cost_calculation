@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "339643618940",
+    "project_id": "fuelcostcalculator-acb3a",
+    "storage_bucket": "fuelcostcalculator-acb3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339643618940:android:5d83609df3b81e8eb95bf9",
+        "android_client_info": {
+          "package_name": "com.example.biletinial_staj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339643618940-bpi2duchnfo2qqg5vbd0tphmfah906rq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.biletinial_staj",
+            "certificate_hash": "6da3b51e8cafb37b7c42ff82e46efa6ac58f6cca"
+          }
+        },
+        {
+          "client_id": "339643618940-0ftaskn28636u8g5jn6qjpfg5v5raag6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHjR7MGpXbmxLkHjkGcakdkIyDfxFHyHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339643618940-0ftaskn28636u8g5jn6qjpfg5v5raag6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

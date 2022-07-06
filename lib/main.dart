@@ -1,8 +1,12 @@
 import 'package:biletinial_staj/sayfalar/home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'auth_controller.dart';
+import 'constants.dart';
 import 'models/basket_model.dart';
 
 main() async {
@@ -10,6 +14,9 @@ main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BasketAdapter());
   await Hive.openBox('Basket');
+  await firebaseInitialization.then((value) {
+    Get.put(AuthController());
+  });
   runApp(const MyApp());
 
 }
@@ -20,12 +27,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color.fromRGBO(13, 31, 41, 1),
       ),
-      home: const Anasayfa(),
+      home: const CircularProgressIndicator(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -50,14 +57,11 @@ class _AnasayfaState extends State<Anasayfa> {
     await Future.delayed(Duration(seconds: 2)).then((value){
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => Anasayfa()),
       );
 
     });
   }
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

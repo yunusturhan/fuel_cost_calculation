@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:biletinial_staj/constants.dart';
 import 'package:biletinial_staj/sayfalar/basket_page.dart';
 import 'package:biletinial_staj/sayfalar/prices.dart';
 import 'package:http/http.dart' as http;
@@ -52,7 +53,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(13, 31, 41, 1),
-
+      endDrawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: ElevatedButton.icon(onPressed: (){
+                authController.signOut();
+              }, icon: Icon(Icons.logout_outlined), label:Text("Sign Out")),
+            ),
+          ],
+        )
+      ),
       body: Center(
         child: Column(
           children: [
