@@ -16,8 +16,6 @@ class AuthController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    // auth is comning from the constants.dart file but it is basically FirebaseAuth.instance.
-    // Since we have to use that many times I just made a constant file and declared there
 
     firebaseUser = Rx<User?>(auth.currentUser);
     googleSignInAccount = Rx<GoogleSignInAccount?>(googleSign.currentUser);
@@ -38,7 +36,7 @@ class AuthController extends GetxController {
 
     } else {
 
-      Get.offAll(() => HomePage());
+      Get.offAll(() => HomePage(email: user.email!,));
 
     }
   }
@@ -48,7 +46,7 @@ class AuthController extends GetxController {
     if (googleSignInAccount == null) {
       Get.offAll(() => const Login());
     } else {
-      Get.offAll(() => HomePage());
+      Get.offAll(() => HomePage(email:googleSignInAccount.email));
     }
   }
 

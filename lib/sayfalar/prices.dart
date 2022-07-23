@@ -20,7 +20,7 @@ class Prices extends StatefulWidget {
 }
 
 Map<String, String> header = {
-  "authorization": "apikey 09vqZE5i2m8uLwY6kPJ3oz:4r662qda0w1BfwnT1iVkHY",
+  "authorization": "apikey 40U7bxqhxGDWgrs7aigc0D:50mO9dyN3zQw3JL2VSrNJU",
   "content-type": "application/json",
   "accept": "charset=UTF-8"
 };
@@ -41,8 +41,10 @@ class _PricesState extends State<Prices> {
 
     if (response.statusCode == 200) {
       var elem = GasolinePrice.fromJson(jsonDecode(response.body));
+      print(1);
       return elem;
     } else {
+      print(0);
       throw Exception('Failed to load album');
     }
   }

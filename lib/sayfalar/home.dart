@@ -1,12 +1,18 @@
 import 'dart:convert';
 import 'package:biletinial_staj/constants.dart';
 import 'package:biletinial_staj/sayfalar/basket_page.dart';
+import 'package:biletinial_staj/sayfalar/history.dart';
 import 'package:biletinial_staj/sayfalar/prices.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../models/city_model.dart';
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  String email;
+  HomePage({Key? key,required this.email}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -28,23 +34,6 @@ List<City> parseCity(String responseBody) {
   return parsed.map<City>((json) => City.fromJson(json)).toList();
 }
 
-class City {
-  final int id;
-  final String name;
-
-  const City({
-    required this.id,
-    required this.name,
-  });
-
-  factory City.fromJson(Map<String, dynamic> json) {
-    return City(
-      id: json['id'] as int,
-      name: json['name'] as String,
-    );
-  }
-}
-
 
 
 class _HomePageState extends State<HomePage> {
@@ -55,12 +44,17 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Color.fromRGBO(13, 31, 41, 1),
       endDrawer: Drawer(
         child: ListView(
+
           children: [
             DrawerHeader(
-              child: ElevatedButton.icon(onPressed: (){
-                authController.signOut();
-              }, icon: Icon(Icons.logout_outlined), label:Text("Sign Out")),
+              child: Text(widget.email)
             ),
+            ElevatedButton.icon(onPressed: (){
+              Get.to(()=>History());
+            }, icon: Icon(FontAwesomeIcons.clockRotateLeft), label:Text("History")),
+            ElevatedButton.icon(onPressed: (){
+              authController.signOut();
+            }, icon: Icon(FontAwesomeIcons.arrowRightFromBracket), label:Text("Sign Out")),
           ],
         )
       ),
@@ -74,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(),
                 const Text("Cities",style: TextStyle(color: Colors.white,fontSize: 20,fontFamily: "DM Sans"),),
                 InkWell(child: Image.asset("assets/images/basket.png",height: 20,width: 20,),onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BasketPage()));
+                  Get.to(()=>BasketPage());
                   print("Basket is clicked");},)
               ],
             ),

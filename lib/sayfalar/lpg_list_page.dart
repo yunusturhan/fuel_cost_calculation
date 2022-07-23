@@ -35,7 +35,7 @@ class _LpgListState extends State<LpgList> {
                   child: Column(
                     children: [
                       Text(
-                        "${widget.data.result![index].lpg}",
+                        "${widget.data.result![index].marka}",
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 14,
